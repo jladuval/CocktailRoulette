@@ -1,4 +1,4 @@
-angular.module("cr.guests", [])
+angular.module("cr.guests", ['webcam'])
 
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $stateProvider
@@ -17,7 +17,6 @@ angular.module("cr.guests", [])
 
     .controller("GuestsCtrl", ['$scope', 'GuestResource',
         function ($scope, GuestResource) {
-
             $scope.guests = GuestResource.query();
 
             $scope.saveGuest = function(){
@@ -26,8 +25,31 @@ angular.module("cr.guests", [])
                 })
                 newGuest.$save();
                 $scope.guests.push(newGuest);
-                $scope.guestName = '';
+                resetForm();
             };
+
+            $scope.cancel = function(){
+                resetForm();
+            }
+
+            $scope.getRandomGuest = function(){
+                resetForm();
+                $('body').scrollTop(1);
+                $scope.showSelected = true;
+                $scope.selectedGuest = $scope.guests[Math.floor(Math.random() * $scope.guests.length)]
+            }
+
+            $scope.newGuest = function(){
+                $('body').scrollTop(1);
+                $scope.showForm = true;
+                $scope.guestName = '';
+            }
+
+            function resetForm(){
+                $scope.guestName = '';
+                $scope.showForm = false;
+                $scope.showSelected = false;
+            }
 
         }
     ]);

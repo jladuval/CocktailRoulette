@@ -7,8 +7,15 @@
     <script src="angular/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-resource.min.js"></script>
     <script src="angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="webcam-directive/dist/webcam.min.js"></script>
     <script src="guests/module.js"></script>
     <script src="app.js"></script>
+
+    <style>
+    .offset-top{
+      margin-top: 200px;
+    }
+    </style>
 
 </head>
 <body ng-controller="AppCtrl">
@@ -23,5 +30,10 @@
 
   <script src="bootstrap-material-design/dist/js/ripples.min.js"></script>
   <script src="bootstrap-material-design/dist/js/material.min.js"></script>
+          <script>
+            $(document).ready(function() {
+                $.material.init();
+            });
+        </script>
 </body>
 </html>
