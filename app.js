@@ -1,16 +1,18 @@
 /**
  * Module dependencies.
  */
+var mongoose = require('mongoose')
 var logger = require('koa-logger')
-var route = require('koa-route')
+var router = require('koa-router')
 var views = require('co-views')
-var parse = require('co-body')
+var parser = require('koa-body-parser')
 var serve = require('koa-static')
 var koa = require('koa')
 var app = koa()
  
 // "data store"
-var todos = [] //To Do : DB change to MongoDB
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/cocktail');
  
 var guests = require('./routes/guests')
 
@@ -20,11 +22,15 @@ var guests = require('./routes/guests')
 app.use(serve('./client/'));
 app.use(serve('./bower_components/'));
 
+app.use(parser())
 app.use(logger())
+
+app.use(router(app));
  
 // route middleware
-app.use(route.get('/', cocktail))
-app.use(route.get('/guests', guests.getAll))
+app.get('/', cocktail)
+app.get('/guests', guests.getAll)
+app.post('/guests', guests.save)
 
 
  

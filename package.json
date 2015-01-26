@@ -7,9 +7,10 @@
     "co-body": "^1.0.0",
     "co-views": "^0.2.0",
     "koa": "^0.15.0",
+    "koa-body-parser": "^1.1.1",
     "koa-logger": "^1.2.2",
-    "koa-route": "^2.4.0",
     "koa-static": "^1.4.8",
+    "mongoose": "^3.8.22",
     "q": "^1.1.2",
     "swig": "^1.4.2"
   },

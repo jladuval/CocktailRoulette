@@ -1,5 +1,8 @@
 <div class="row">
     <div class="col-xs-12">
+    	{{guestName}}
+    	<input type="text" name="newGuest" ng-model="guestName"/>
+    	<button type="submit" ng-click="saveGuest()" >Save</button>
         <ul>
             <li ng-repeat="guest in guests">
             {{guest.name}}

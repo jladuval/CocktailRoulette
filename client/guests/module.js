@@ -20,5 +20,14 @@ angular.module("cr.guests", [])
 
             $scope.guests = GuestResource.query();
 
+            $scope.saveGuest = function(){
+                var newGuest = new GuestResource({
+                    name: $scope.guestName
+                })
+                newGuest.$save();
+                $scope.guests.push(newGuest);
+                $scope.guestName = '';
+            };
+
         }
-        ]);
+    ]);
