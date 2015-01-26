@@ -18,7 +18,7 @@ angular.module("cr.guests", [])
     .controller("GuestsCtrl", ['$scope', 'GuestResource',
         function ($scope, GuestResource) {
 
-            $scope.guests = GuestResource.get();
+            $scope.guests = GuestResource.query();
 
         }
         ]);
