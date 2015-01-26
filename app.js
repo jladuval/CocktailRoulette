@@ -12,7 +12,7 @@ var app = koa()
  
 // "data store"
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/cocktail');
+mongoose.connect('mongodb://localhost/cocktailroulette');
  
 var guests = require('./routes/guests')
 
@@ -20,6 +20,7 @@ var guests = require('./routes/guests')
 
 
 app.use(serve('./client/'));
+app.use(serve('./public/'));
 app.use(serve('./bower_components/'));
 
 app.use(parser())
@@ -46,71 +47,6 @@ var render= views(__dirname + '/views',
 function *cocktail() {
   this.body = yield render('index')
 }
- 
-// /**
-//  * Form for create new todo item.
-//  */
-// function *add() {
-//   this.body = yield render('new')
-// }
- 
-// /**
-//  * Form for edit a todo items.
-//  */
-// function *edit(id) {
-//     var todo = todos[id]
-//     if (!todo) this.throw(404, 'invalid todo id')
-//     this.body = yield render('edit', { todo: todo })
-// }
- 
-// /**
-//  * Show details of a todo item.
-//  */
- 
-// function *show(id) {
-//   var todo = todos[id]
-//   if (!todo) this.throw(404, 'invalid todo id')
-//   this.body = yield render('show', { todo: todo })
-// }
- 
-// /**
-//  * Delete a todo item
-//  */
-// function *remove(id) {
-//     var todo = todos[id]
-//     if (!todo) this.throw(404, 'invalid todo id')
-//    todos.splice(id,1)
-//     //Changing the Id for working with index
-//     for (var i = 0 i < todos.length i++)
-//     {
-//         todos[i].id=i
-//     }
-//     this.redirect('/')
-// }
- 
-// /**
-//  * Create a todo item into the data store.
-//  */
-// function *create() {
-//   var todo = yield parse(this)
-//   todo.created_on = new Date
-//   todo.updated_on = new Date
-//   var id = todos.push(todo)
-//   todo.id = id-1//Id with index of the array
-//   this.redirect('/')
-// }
- 
-// /**
-//  * Update an existing todo item.
-//  */
-// function *update() {
-//     var todo = yield parse(this)
-//     var index=todo.id
-//     todos[index].name=todo.name
-//     todos[index].description=todo.description
-//     todos[index].updated_on = new Date
-//     this.redirect('/')
-// }
  
 // http server listening
 app.listen(3000)

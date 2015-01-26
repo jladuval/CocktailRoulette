@@ -15,10 +15,12 @@
                     <h4 class="list-group-item-heading">{{guest.name}}</h4>
                 </div>
             </div>
-            <div class="list-group-separator"></div>
         </div>
         <button type="submit" ng-click="newGuest()" class="btn btn-large btn-success">I'm Not on the list!</button>
 
+    </div>
+    <div class="col-sm-6" ng-show = "loading">
+        <img ng-src="{{loadingGif}}"/>
     </div>
     <div class="col-sm-6" ng-show = "showForm">
         <form class="form-horizontal offset-top" >
