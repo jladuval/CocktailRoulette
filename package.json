@@ -1,0 +1,30 @@
+{
+  "name": "CocktailRoulette",
+  "version": "1.0.0",
+  "description": "Hosting a cocktail party with your friends? This little app will make it a bit more fun. Assigns a random person at the party to make a cocktail for you.",
+  "main": "app.js",
+  "dependencies": {
+    "co-body": "^1.0.0",
+    "co-views": "^0.2.0",
+    "koa": "^0.15.0",
+    "koa-logger": "^1.2.2",
+    "koa-route": "^2.4.0",
+    "koa-static": "^1.4.8",
+    "q": "^1.1.2",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jladuval/CocktailRoulette.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jladuval/CocktailRoulette/issues"
+  },
+  "homepage": "https://github.com/jladuval/CocktailRoulette"
+}
