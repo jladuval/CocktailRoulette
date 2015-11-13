@@ -1,43 +1,43 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose')
-var logger = require('koa-logger')
-var router = require('koa-router')
-var views = require('co-views')
-var parser = require('koa-body-parser')
-var serve = require('koa-static')
-var koa = require('koa')
-var app = koa()
+var mongoose = require('mongoose'),
+	logger = require('koa-logger'),
+	router = require('koa-router'),
+	views = require('co-views'),
+	parser = require('koa-body-parser'),
+	serve = require('koa-static'),
+	koa = require('koa'),
+	mount = require('koa-mount'),
+	app = koa(),
+	r;
  
-// "data store"
+// Database
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/cocktailroulette');
  
-var guests = require('./routes/guests')
+var guests = require('./routes/guests');
 
 // middleware
-
-
 app.use(serve('./client/'));
 app.use(serve('./public/'));
 app.use(serve('./bower_components/'));
+app.use(parser());
+app.use(logger());
 
-app.use(parser())
-app.use(logger())
+r = router(app);
 
-app.use(router(app));
+app.use(mount('/', r.middleware()));
  
 // route middleware
-app.get('/', cocktail)
-app.get('/guests', guests.getAll)
-app.post('/guests', guests.save)
+r.get('/', cocktail);
+r.get('/guests', guests.getAll);
+r.post('/guests', guests.save);
 
 
  
 //Specifying Swig view engine
-var render= views(__dirname + '/views',
- { map: { html: 'swig' }})
+var render= views(__dirname + '/views', { map: { html: 'swig' }});
  
 // route definitions
  
@@ -49,5 +49,5 @@ function *cocktail() {
 }
  
 // http server listening
-app.listen(3000)
-console.log('listening on port 3000')
+app.listen(3000);
+console.log('listening on port 3000');
