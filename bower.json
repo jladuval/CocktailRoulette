@@ -1,9 +1,10 @@
 {
   "name": "CocktailRoulette",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/jladuval/CocktailRoulette",
   "authors": [
-    "Jacob Duval <jladuval@gmail.com>"
+    "Jacob Duval <jladuval@gmail.com>",
+	"Matthew Knox <matthew@makereti.co.nz>"
   ],
   "moduleType": [
     "es6"
